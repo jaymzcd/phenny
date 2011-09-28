@@ -13,8 +13,6 @@ def ac(phenny, input):
         work. 
     """
     ac_filter = input.group(2).split(' ')
-    print ac_filter
-   
     filter_name = ac_filter[0]
     if str.isdigit(str(filter_name)):
         # Assume that we're referencing a project id
@@ -29,11 +27,8 @@ def ac(phenny, input):
             return None
         
     subcommand, sub_id = [_param(x) for x in range(1, 3)]
-
     req = ACRequest('projects', item_id=item_id, subcommand=subcommand, sub_id=sub_id)
-
     ac_response = req.execute()
-    print "Total items: %d" % len(ac_response)
 
     for item in ac_response:
         # If we have an id then print out all the returned data
